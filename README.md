@@ -8,14 +8,14 @@ A collection of algorithmic patterns and data structures studied through problem
 * Two Pointers
 * Stacks
 * Binary Search
+* Sliding Window
 
 ## In Progress
 
-*  Sliding Window
+* Linked List
 
 ## Upcoming
 
-* Linked List
 * Trees
 * Heap / Priority Queue
 * Backtracking
