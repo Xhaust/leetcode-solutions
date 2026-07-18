@@ -9,14 +9,14 @@ A collection of algorithmic patterns and data structures studied through problem
 * Stacks
 * Binary Search
 * Sliding Window
+* Linked List
 
 ## In Progress
 
-* Linked List
+* Trees
 
 ## Upcoming
 
-* Trees
 * Heap / Priority Queue
 * Backtracking
 * Tries
