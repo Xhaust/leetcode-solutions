@@ -10,16 +10,16 @@ A collection of algorithmic patterns and data structures studied through problem
 * Binary Search
 * Sliding Window
 * Linked List
+* Trees
 
 ## In Progress
 
-* Trees
+* Tries
 
 ## Upcoming
 
 * Heap / Priority Queue
 * Backtracking
-* Tries
 * Graphs
 * Advanced Graphs
 * 1-D Dynamic Programming
