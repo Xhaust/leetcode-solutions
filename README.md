@@ -11,14 +11,14 @@ A collection of algorithmic patterns and data structures studied through problem
 * Sliding Window
 * Linked List
 * Trees
+* Tries
 
 ## In Progress
 
-* Tries
+* Heap / Priority Queue
 
 ## Upcoming
 
-* Heap / Priority Queue
 * Backtracking
 * Graphs
 * Advanced Graphs
