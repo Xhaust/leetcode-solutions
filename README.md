@@ -12,14 +12,14 @@ A collection of algorithmic patterns and data structures studied through problem
 * Linked List
 * Trees
 * Tries
+* Heap / Priority Queue
 
 ## In Progress
 
-* Heap / Priority Queue
+* Backtracking
 
 ## Upcoming
 
-* Backtracking
 * Graphs
 * Advanced Graphs
 * 1-D Dynamic Programming
