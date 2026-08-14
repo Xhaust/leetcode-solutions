@@ -37,15 +37,13 @@ from typing import *
 
 # @leet start
 class ListNode:
-    def __init__(self, key, val) -> None:
+    def __init__(self, key, value):
         self.key = key
-        self.val = val
+        self.value = value
         self.prev = None
         self.next = None
 
 class LRUCache:
-
-    # O(1) | WATCHED SOLUTION
 
     def __init__(self, capacity: int):
         self.capacity = capacity
@@ -55,44 +53,48 @@ class LRUCache:
         self.head.next = self.tail
         self.tail.prev = self.head
 
-    def _add(self, node: ListNode):
-        next_node = self.head.next
+
+    def insert(self, node):
+        nxt = self.head.next
+        prv = self.head
         self.head.next = node
-        node.prev = self.head
-        node.next = next_node
-        next_node.prev = node
+        nxt.prev = node
+        node.next = nxt
+        node.prev = prv
 
 
-    def _remove(self, node: ListNode):
-        prev_node = node.prev
-        next_node = node.next
-        prev_node.next = next_node
-        next_node.prev = prev_node
+    def remove(self, node):
+        prv = node.prev
+        nxt = node.next
+        node.prev.next = nxt
+        node.next.prev = prv
+
 
     def get(self, key: int) -> int:
-        if key not in self.cache:
+        if key in self.cache:
+            node = self.cache[key]
+            self.remove(node)
+            self.insert(node)
+            return node.value
+        else:
             return -1
 
-        node = self.cache[key]
-        self._remove(node)
-        self._add(node)
-        return node.val
 
     def put(self, key: int, value: int) -> None:
         if key in self.cache:
             node = self.cache[key]
-            self._remove(node)
-            del self.cache[key]
+            self.remove(node)
+            self.insert(node)
+            self.cache[key].value = value
+        else:
+            new_node = ListNode(key, value)
+            self.cache[key] = new_node
+            self.insert(new_node)
 
-        if len(self.cache) >= self.capacity:
+        if len(self.cache) > self.capacity:
             lru_node = self.tail.prev
-            self._remove(lru_node)
             del self.cache[lru_node.key]
-
-        new_node = ListNode(key, value)
-        self._add(new_node)
-        self.cache[key] = new_node
-
+            self.remove(lru_node)
 
 
 # Your LRUCache object will be instantiated and called as such:
