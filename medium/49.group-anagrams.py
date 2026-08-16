@@ -39,13 +39,17 @@ from typing import *
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
 
-        # O(n*klogk) | WATCHED SOLUTION
+        # O(nklogk)
 
-        anagrams = defaultdict(list)
+        seen = {}
 
-        for word in strs:
-            sorted_word = "".join(sorted(word))
-            anagrams[sorted_word].append(word)
+        for string in strs:
+            sorted_string = "".join(sorted(string))
+            if sorted_string in seen:
+                seen[sorted_string].append(string)
+            else: 
+                seen[sorted_string] = [string]
 
-        return list(anagrams.values())
+        return [group for group in seen.values()]
+        
 # @leet end
