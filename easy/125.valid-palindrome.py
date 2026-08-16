@@ -38,17 +38,10 @@ from typing import *
 # @leet start
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        
+
         # O(n)
 
-        s = re.sub('[^a-zA-Z0-9]','', s).lower()
-        l, r = 0, len(s) - 1
-
-        while l < r:
-            if s[l] != s[r]:
-                return False
-            l += 1
-            r -= 1
-
-        return True
+        valid_string = "".join(filter(str.isalnum, s)).lower()
+        return valid_string == valid_string[::-1]
+        
 # @leet end
