@@ -44,34 +44,17 @@ class ListNode:
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
 
-        # O(n) | FIRST TRY
-
-        # dummy = ListNode(0)
-        # dummy.next = head
-        # curr = dummy
-        # stk = []
-        #
-        # while curr.next:
-        #     stk.append(curr.next.val)
-        #     curr = curr.next
-        #
-        # curr = dummy
-        # while curr.next and stk:
-        #     curr.next.val = stk.pop()
-        #
-        # return dummy.next
-
-        # O(n) | WATCHED SOLUTION
+        # O(n)
 
         prev = None
         curr = head
-
-        while curr is not None:
+        
+        while curr:
             nxt = curr.next
             curr.next = prev
             prev = curr
             curr = nxt
-
+        
         return prev
         
 # @leet end
