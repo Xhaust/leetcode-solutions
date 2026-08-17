@@ -41,16 +41,17 @@ class Solution:
 
         # O(n)
 
-        l = maxLength = 0
-        seen = {}
+        res = 0
+        seen = set()
+        l = 0
 
         for r in range(len(s)):
             while s[r] in seen:
-                del seen[s[l]]
+                seen.remove(s[l])
                 l += 1
-            maxLength = max((r - l) + 1, maxLength) 
-            seen[s[r]] = 1
+            seen.add(s[r])
+            res = max(r + 1 - l, res)
 
-        return maxLength
+        return res
         
 # @leet end
