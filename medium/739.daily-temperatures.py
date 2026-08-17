@@ -38,19 +38,17 @@ from typing import *
 # @leet start
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
-        
-        # O(n) | WATCHED SOLUTION
 
-        ans = [0] * len(temperatures)
+        # O(n)
+
         stack = []
-        
-        for i, temp in enumerate(temperatures):
-            while stack and temp > temperatures[stack[-1]]:
-                prev_index = stack.pop()
-                ans[prev_index] = i - prev_index
-                
+        res = [0] * len(temperatures)
+        for i in range(len(temperatures)):
+            while stack and temperatures[i] > temperatures[stack[-1]]:
+                temp = stack.pop()
+                res[temp] = i - temp
             stack.append(i)
-            
-        return ans
 
+        return res
+        
 # @leet end
