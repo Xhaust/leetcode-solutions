@@ -41,13 +41,17 @@ class Solution:
 
         # O(n)
 
-        l, r = 0, len(numbers) - 1
+        l = 0
+        r = len(numbers) - 1
 
         while l < r:
-            sum = numbers[l] + numbers[r]
-            if sum == target:
+            two_sum = numbers[l] + numbers[r]
+
+            if two_sum == target:
                 return [l + 1, r + 1]
-            elif sum < target: l += 1
-            else: r -= 1
+            if two_sum < target:
+                l += 1
+            else:
+                r -= 1
         
 # @leet end
