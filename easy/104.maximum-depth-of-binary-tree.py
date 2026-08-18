@@ -47,9 +47,16 @@ class Solution:
 
         # O(n)
 
-        if root is None:
-            return 0
+        def dfs(node, count) -> int:
+            if node is None:
+                return count
 
-        return 1 + max(self.maxDepth(root.left),self.maxDepth(root.right))
+            left = dfs(node.left, count + 1)
+            right = dfs(node.right, count + 1)
 
+            return max(left, right)
+
+        return dfs(root, 0)
+
+        
 # @leet end
