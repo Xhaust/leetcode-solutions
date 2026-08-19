@@ -38,10 +38,16 @@ from typing import *
 # @leet start
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+
+        # O(nlogk)
+
+        count = Counter(nums)
+        count.most_common(k)
+        res = []
+
+        for num in count.most_common(k):
+            res.append(num[0])
+
+        return res
         
-        # O(n log n)
-
-        dict = Counter(nums)
-        return [num for num, qty in dict.most_common(k)]
-
 # @leet end
