@@ -39,7 +39,7 @@ from typing import *
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
 
-        # O(nlogn)
+        # O(n)
 
         heapq.heapify(nums)
 
@@ -47,5 +47,5 @@ class Solution:
             heapq.heappop(nums)
 
         return heapq.heappop(nums)
-        
+
 # @leet end
