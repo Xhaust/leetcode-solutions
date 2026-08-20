@@ -42,12 +42,14 @@ class Solution:
         # O(n)
 
         res = 0
-        min_price = float('inf')
+        l = 0
 
-        for price in prices:
-            min_price = min(price, min_price)
-            res = max(price - min_price, res)
+        for r in range(len(prices)):
+            profit = prices[r] - prices[l]
+            res = max(profit, res)
+            if prices[r] < prices[l]:
+                l = r
 
-        return int(res)
+        return res
         
 # @leet end
