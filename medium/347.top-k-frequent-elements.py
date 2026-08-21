@@ -39,15 +39,19 @@ from typing import *
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
 
-        # O(nlogk)
+        # O(n) | BUCKET SORT APPROACH
 
         count = Counter(nums)
-        count.most_common(k)
+        freq = [[] for _ in range(len(nums) + 1)]
         res = []
 
-        for num in count.most_common(k):
-            res.append(num[0])
-
-        return res
+        for key, value in count.items():
+            freq[value].append(key)
         
+        for i in range(len(freq) - 1, 0, -1):
+            for num in freq[i]:
+                res.append(num)
+                if len(res) == k:
+                    return res
+
 # @leet end
