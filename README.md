@@ -14,15 +14,15 @@ A collection of algorithmic patterns and data structures studied through problem
 * Tries
 * Heap / Priority Queue
 * Backtracking
+* Graphs
 
 ## In Progress
 
-* Graphs
+* 1-D Dynamic Programming
 
 ## Upcoming
 
 * Advanced Graphs
-* 1-D Dynamic Programming
 * 2-D Dynamic Programming
 * Greedy
 * Intervals
