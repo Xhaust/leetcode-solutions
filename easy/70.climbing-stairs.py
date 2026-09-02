@@ -37,13 +37,18 @@ from typing import *
 
 # @leet start
 class Solution:
-    @cache
     def climbStairs(self, n: int) -> int:
-        
-        # O(n) | WATCHED SOLUTION
 
-        if n <= 2:
-            return n
-        else: return self.climbStairs(n - 1) + self.climbStairs(n - 2)
+        # O(n)
+
+        one, two = 1, 1
+        curr = 1
+
+        for num in range(n - 1, 0, -1):
+            curr = one + two
+            two = one
+            one = curr
+
+        return curr
         
 # @leet end
