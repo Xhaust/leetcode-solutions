@@ -39,29 +39,32 @@ from typing import *
 class Solution:
     def numDecodings(self, s: str) -> int:
 
-        # O(n) | WATCHED SOLUTION
+        # O(n) | TOP DOWN APPROACH
 
-        if s[0] == '0':
-            return 0
+        memo = {}
 
-        one, two = 1, 1
+        def dfs(i):
+            if i >= len(s):
+                return 1
 
-        for i in range(1, len(s)):
-            curr = 0
-            
-            if s[i] != '0':
-                curr += two
-
-            decimal = int(s[i-1:i+1])
-            if 10 <= decimal <= 26:
-                curr += one
-
-            if curr == 0:
+            if s[i] == '0':
                 return 0
-            
-            one = two
-            two = curr
 
-        return two
-            
+            if i in memo:
+                return memo[i]
+
+            res = dfs(i + 1)
+
+            if i + 1 < len(s):
+                decimal = s[i:i+2]
+                if "10" <= decimal <= "26":
+                    res += dfs(i + 2)
+
+            memo[i] = res
+
+            return res
+
+        return dfs(0)
+
+        
 # @leet end
