@@ -39,16 +39,21 @@ from typing import *
 class Solution:
     def rob(self, nums: List[int]) -> int:
 
-        # O(n) | WATCHED SOLUTION
+        # O(n)
 
-        return max(nums[0], self.helper(nums[1:]), self.helper(nums[:-1]))
+        if len(nums) == 1:
+            return nums[0]
+        
+        return max(self.rob1(nums[:-1]), self.rob1(nums[1:]))
 
-    def helper(self, nums):
-        one, two = 0, 0
+    def rob1(self, nums):
+        one = 0
+        two = 0
+
         for num in nums:
-            temp = max(one + num, two)
+            curr = max(two, one + num)
             one = two
-            two = temp
+            two = curr
 
         return two
 
