@@ -41,30 +41,28 @@ class Solution:
 
         # O(n)
 
-        longest = 0
-        res = ""
+        start = 0
+        max_len = 1
 
-        for i, char in enumerate(s):
-            l = i
-            r = i
+        def is_palindrome(l, r):
             while l >= 0 and r < len(s) and s[l] == s[r]:
-                if (r - l + 1) > longest:
-                    longest = r - l + 1
-                    res = s[l : r + 1]
                 l -= 1
                 r += 1
 
-            l = i
-            r = i + 1
-            while l >= 0 and r < len(s) and s[l] == s[r]:
-                if (r - l + 1) > longest:
-                    longest = r - l + 1
-                    res = s[l : r + 1]
-                l -= 1
-                r += 1
+            return r - l - 1
+            
 
-        return res
+        for i in range(len(s)):
+            len1 = is_palindrome(i, i)
+            len2 = is_palindrome(i, i + 1)
 
+            curr = max(len1, len2)
 
-        
+            if curr > max_len:
+                max_len = curr
+                start = i - (curr - 1) // 2
+
+        return s[start : start + max_len]
+
+            
 # @leet end
