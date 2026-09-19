@@ -37,18 +37,20 @@ from typing import *
 
 # @leet start
 class Solution:
-    def maxProduct(self, nums: List[int]) -> int:
+    def maxProduct(self, nums: list[int]) -> int:
 
-        # O(n)
+        # O(n) | WATCHED OPTIMAL SOLUTION
 
-        dp_max = [float('-inf')] * (len(nums))
-        dp_min = [float('inf')] * (len(nums))
-        dp_max[0], dp_min[0] = nums[0], nums[0]
+        res = nums[0]
+        min_num = 1
+        max_num = 1
 
-        for i in range(1, len(nums)):
-            dp_max[i] = max(nums[i], dp_max[i - 1] * nums[i], dp_min[i - 1] * nums[i])
-            dp_min[i] = min(nums[i], dp_min[i - 1] * nums[i], dp_max[i - 1] * nums[i])
+        for num in nums:
+            tmp = max_num * num
+            max_num = max(num * max_num, num * min_num, num)
+            min_num = min(num * min_num, tmp, num)
+            res = max(res, max_num)
 
-        return max(dp_max)
+        return res
         
 # @leet end
